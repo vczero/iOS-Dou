@@ -7,6 +7,8 @@
 //
 
 #import "BookViewController.h"
+#import "ServiceURL.h"
+#import "BookDetailViewController.h"
 
 @interface BookViewController ()
 
@@ -17,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     //搜索框
     int btnWidth = 60;
     int searchHeight = 40;
@@ -113,29 +114,31 @@
         pageNum.font = [UIFont fontWithName:@"Heiti TC" size:14];
         [item addSubview:pageNum];
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(itemClick:)];
+        tap.numberOfTapsRequired = 1; //tap次数
+        tap.numberOfTouchesRequired = 1; //手指数
+        [item addGestureRecognizer:tap];
+        
         [scrollView addSubview: item];
-        [self.view addSubview:scrollView];
+
     }
+    [self.view addSubview:scrollView];
     
     //请求数据
-    NSString *urlStr = [NSString stringWithFormat:@"https://api.douban.com/v2/book/search?count=10&q=C语言"];
-    NSURL *url = [NSURL URLWithString:[urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc]init];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
-        if(error){
-            NSLog(@"%@", error);
-        }else{
-            NSInteger code = [(NSHTTPURLResponse*)response statusCode];
-            NSString *result = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"%ld", code);
-            NSLog(@"%@", result);
-        }
-    }];
+//    NSString *urlStr = [NSString stringWithFormat:@"https://api.douban.com/v2/book/search?count=10&q=C语言"];
+//    [ServiceURL getData:urlStr completion:^(NSError * error, id data) {
+//        NSLog(@"%@", error);
+//        NSLog(@"%@", data[@"books"]);
+//        NSLog(@"%@", [[data objectForKey:@"books"]objectAtIndex:0]);
+//    }];
     
     
+}
+
+-(void)itemClick:(id)sender{
+    NSLog(@"click");
+    [self.navigationController pushViewController:[BookDetailViewController new] animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
@@ -189,5 +192,9 @@
     [super viewDidLayoutSubviews];
     NSLog(@"%@",self.view);
 }
+
+
+
+
 
 @end

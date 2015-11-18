@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "RootViewController.h"
 #import "BookViewController.h"
 #import "MovieViewController.h"
 #import "MusicViewController.h"
 
 @interface AppDelegate ()
+
+@property(strong, nonatomic) UITabBarController *tabBarController;
 
 @end
 
@@ -26,43 +29,42 @@
         self.window = [[UIWindow alloc]init];
     }
     self.window.frame = [[UIScreen mainScreen]bounds];
-
-    //添加UITabBarController
-    UITabBarController *tb = [[UITabBarController alloc] init];
+    self.tabBarController = [[UITabBarController alloc] init];
     
-    //创建子控制器
-    BookViewController *bookView = [BookViewController new];
-    bookView.view.backgroundColor = [UIColor whiteColor];
-    bookView.tabBarItem.title = @"图书";
-    bookView.tabBarItem.image = [UIImage imageNamed:@"book"];
-    bookView.tabBarItem.badgeValue = @"5";
-
-    MovieViewController *movieView = [MovieViewController new];
-    movieView.view.backgroundColor = [UIColor whiteColor];
-    movieView.tabBarItem.title = @"电影";
-    movieView.tabBarItem.image = [UIImage imageNamed:@"movie"];
-
-    MusicViewController *musicView = [MusicViewController new];
-    musicView.view.backgroundColor = [UIColor whiteColor];
-    musicView.tabBarItem.title = @"音乐";
-    musicView.tabBarItem.image = [UIImage imageNamed:@"music"];
+    BookViewController *bookViewController = [BookViewController new];
+    bookViewController.view.backgroundColor = [UIColor whiteColor];
+    bookViewController.tabBarItem.title = @"图书";
+    bookViewController.tabBarItem.image = [UIImage imageNamed:@"book"];
+    bookViewController.tabBarItem.badgeValue = @"5";
+    UINavigationController *bookNav = [[UINavigationController alloc]initWithRootViewController:bookViewController];
+    [bookNav setNavigationBarHidden:YES];
     
-    //[tb addChildViewController:rootView];
-    //[tb addChildViewController:rootView2];
-    //[tb addChildViewController:rootView3];
     
-    //设置tabbar的颜色
+    MovieViewController *movieViewController = [MovieViewController new];
+    movieViewController.view.backgroundColor = [UIColor whiteColor];
+    movieViewController.tabBarItem.title = @"电影";
+    movieViewController.tabBarItem.image = [UIImage imageNamed:@"movie"];
+    UINavigationController *moviewNav = [[UINavigationController alloc]initWithRootViewController:movieViewController];
+    [moviewNav setNavigationBarHidden:YES];
+    
+    MusicViewController *musicViewController = [MusicViewController new];
+    musicViewController.view.backgroundColor = [UIColor whiteColor];
+    musicViewController.tabBarItem.title = @"音乐";
+    musicViewController.tabBarItem.image = [UIImage imageNamed:@"music"];
+    UINavigationController *musicNav = [[UINavigationController alloc]initWithRootViewController:musicViewController];
+    [musicNav setNavigationBarHidden:YES];
+    
+    //设置TabBar的颜色
     int width = [[UIScreen mainScreen] applicationFrame].size.width;
     UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 49)];
     blackView.backgroundColor = [UIColor blackColor];
-    [tb.tabBar insertSubview:blackView atIndex:0];
-    tb.tabBar.opaque = YES;
-
-    //设置statusBar
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        
-    tb.viewControllers=@[bookView, movieView, musicView];
-    self.window.rootViewController = tb;
+    
+    
+    [self.tabBarController.tabBar insertSubview:blackView atIndex:0];
+    self.tabBarController.tabBar.opaque = YES;
+   
+    self.tabBarController.viewControllers=@[bookNav, moviewNav, musicNav];
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     
     return YES;
