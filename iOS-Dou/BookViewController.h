@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BookViewController : UIViewController<UIScrollViewDelegate>
+@interface BookViewController : UIViewController
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
 

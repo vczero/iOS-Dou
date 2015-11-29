@@ -27,12 +27,12 @@
     bookLabel.font = [UIFont fontWithName:@"Heiti TC" size:14];
     bookLabel.textColor = [UIColor blackColor];
     [self.view addSubview:bookLabel];
-    
-    UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] init];
-    backBtn.title = @"图书";
-    self.navigationItem.backBarButtonItem = backBtn;
-    [self.navigationController setNavigationBarHidden:NO];
 
+}
+
+-(void)backItemClick:(id)sender{
+    UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"提示" message:@"你点击了导航栏左按钮" delegate:self  cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alter show];
 }
 
 - (void)didReceiveMemoryWarning {
