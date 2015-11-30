@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BookDetailViewController : UIViewController
-
+@property (nonatomic) id bookId;
 @end

@@ -37,9 +37,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-
-        [super viewWillAppear:animated];
-        self.navigationController.navigationBar.hidden = NO;
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
     
 }
 
@@ -48,10 +47,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)NavigationToMainView{
-    [self.navigationController setNavigationBarHidden:YES];
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 
 

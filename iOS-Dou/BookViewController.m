@@ -10,10 +10,13 @@
 #import "ServiceURL.h"
 #import "BookDetailViewController.h"
 
+#define IDX_TAG  9090
+
 @interface BookViewController () {
     
     UIScrollView *              _contentView;
     UIActivityIndicatorView *   _activityIndicator;
+    NSArray *                   _tempBooks;
     
 }
 
@@ -25,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"图书";
+   
     int btnWidth = 60;
     int searchHeight = 40;
     int statusHieght = 30;
@@ -64,12 +67,11 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
--(void)itemClick:(id)sender{
-    NSLog(@"click");
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"图书" style:UIBarButtonItemStylePlain target:self action:@selector(backItemClick:)];
-    [self.navigationItem setBackBarButtonItem:backItem];
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController pushViewController:[BookDetailViewController new] animated:YES];
+-(void)itemClick:(UITapGestureRecognizer *)ges{
+    NSInteger idx = ges.view.tag - IDX_TAG;
+    BookDetailViewController *detail = [BookDetailViewController new];
+    detail.bookId = _tempBooks[idx];
+    [self.navigationController pushViewController:detail animated:YES];
     
 }
 
@@ -88,7 +90,6 @@
     NSString *searchKey = self.searchInput.text.length == 0  ? @"C语言" : self.searchInput.text;
     NSString *urlStr = [NSString stringWithFormat:@"%@?count=10&q=%@", [ServiceURL getBookSearchURL],searchKey];
     [ServiceURL getData:urlStr completion:^(NSError * error, id data) {
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 UIAlertView * alert = [[UIAlertView alloc]init];
@@ -106,6 +107,7 @@
                 return;
             }
             
+            _tempBooks = books;
             int viewHeight = 100;
             int blockHieght = viewHeight + 20;
             int screenWidth = [[UIScreen mainScreen]bounds].size.width;
@@ -182,9 +184,8 @@
                 tap.numberOfTapsRequired = 1; //tap次数
                 tap.numberOfTouchesRequired = 1; //手指数
                 [item addGestureRecognizer:tap];
-                
                 [_contentView addSubview: item];
-
+                item.tag = (IDX_TAG + idx);
                 
             }];
             [_activityIndicator stopAnimating];
