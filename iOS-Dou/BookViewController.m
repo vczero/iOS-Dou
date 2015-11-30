@@ -7,7 +7,7 @@
 //
 
 #import "BookViewController.h"
-#import "ServiceURL.h"
+#import "Service.h"
 #import "BookDetailViewController.h"
 
 #define IDX_TAG  9090
@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    self.title = @"图书";
     int btnWidth = 60;
     int searchHeight = 40;
     int statusHieght = 30;
@@ -70,7 +70,8 @@
 -(void)itemClick:(UITapGestureRecognizer *)ges{
     NSInteger idx = ges.view.tag - IDX_TAG;
     BookDetailViewController *detail = [BookDetailViewController new];
-    detail.bookId = _tempBooks[idx];
+    detail.bookId = _tempBooks[idx][@"id"];
+    detail.title = _tempBooks[idx][@"title"];
     [self.navigationController pushViewController:detail animated:YES];
     
 }
@@ -83,13 +84,14 @@
         _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         _activityIndicator.center = self.view.center;
         _activityIndicator.hidesWhenStopped = YES;
+        _activityIndicator.color = [UIColor colorWithRed:0.000 green:0.525 blue:0.992 alpha:1];
         [self.view addSubview:_activityIndicator];
     }
     
     [_activityIndicator startAnimating];
     NSString *searchKey = self.searchInput.text.length == 0  ? @"C语言" : self.searchInput.text;
-    NSString *urlStr = [NSString stringWithFormat:@"%@?count=10&q=%@", [ServiceURL getBookSearchURL],searchKey];
-    [ServiceURL getData:urlStr completion:^(NSError * error, id data) {
+    NSString *urlStr = [NSString stringWithFormat:@"%@?count=10&q=%@", [Service getBookSearchURL],searchKey];
+    [Service getData:urlStr completion:^(NSError * error, id data) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error) {
                 UIAlertView * alert = [[UIAlertView alloc]init];
@@ -144,7 +146,7 @@
                 authorLabel.frame = CGRectMake(bookImgWidth + 10, 20, 200, 30);
                 authorLabel.textColor = [UIColor colorWithRed:0.400 green:0.400 blue:0.435 alpha:1];
                 authorLabel.font = [UIFont fontWithName:@"Heiti TC" size:13];
-                authorLabel.text = @"Bjarne Stroustrup";
+                authorLabel.text = obj[@"author"][0];
                 [item addSubview:authorLabel];
                 
                 //出版社

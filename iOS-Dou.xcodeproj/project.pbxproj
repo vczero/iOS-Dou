@@ -16,7 +16,7 @@
 		1C14760C1BF9B44A00B2C208 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C14760B1BF9B44A00B2C208 /* Images.xcassets */; };
 		1C14760F1BF9B44A00B2C208 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C14760D1BF9B44A00B2C208 /* LaunchScreen.xib */; };
 		1C14761B1BF9B44A00B2C208 /* iOS_DouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C14761A1BF9B44A00B2C208 /* iOS_DouTests.m */; };
-		1C1476271BF9B9B900B2C208 /* ServiceURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1476261BF9B9B900B2C208 /* ServiceURL.m */; };
+		1C1476271BF9B9B900B2C208 /* Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1476261BF9B9B900B2C208 /* Service.m */; };
 		1C1476311BF9BEBB00B2C208 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1476301BF9BEBB00B2C208 /* MovieViewController.m */; };
 		1C1476341BF9BF8900B2C208 /* MusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1476331BF9BF8900B2C208 /* MusicViewController.m */; };
 		1C14763B1BF9F52E00B2C208 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C1476381BF9F52E00B2C208 /* book.png */; };
@@ -52,8 +52,8 @@
 		1C1476141BF9B44A00B2C208 /* iOS-DouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-DouTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C1476191BF9B44A00B2C208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1C14761A1BF9B44A00B2C208 /* iOS_DouTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOS_DouTests.m; sourceTree = "<group>"; };
-		1C1476251BF9B9B900B2C208 /* ServiceURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceURL.h; sourceTree = "<group>"; };
-		1C1476261BF9B9B900B2C208 /* ServiceURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceURL.m; sourceTree = "<group>"; };
+		1C1476251BF9B9B900B2C208 /* Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Service.h; sourceTree = "<group>"; };
+		1C1476261BF9B9B900B2C208 /* Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Service.m; sourceTree = "<group>"; };
 		1C14762F1BF9BEBB00B2C208 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		1C1476301BF9BEBB00B2C208 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		1C1476321BF9BF8900B2C208 /* MusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicViewController.h; sourceTree = "<group>"; };
@@ -155,8 +155,8 @@
 		1C1476241BF9B92E00B2C208 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				1C1476251BF9B9B900B2C208 /* ServiceURL.h */,
-				1C1476261BF9B9B900B2C208 /* ServiceURL.m */,
+				1C1476251BF9B9B900B2C208 /* Service.h */,
+				1C1476261BF9B9B900B2C208 /* Service.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 				1C1476041BF9B44A00B2C208 /* AppDelegate.m in Sources */,
 				1C1476011BF9B44A00B2C208 /* main.m in Sources */,
 				1C05C1901BFB78740026FAEC /* BookDetailViewController.m in Sources */,
-				1C1476271BF9B9B900B2C208 /* ServiceURL.m in Sources */,
+				1C1476271BF9B9B900B2C208 /* Service.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,4 +10,5 @@
 
 @interface BookDetailViewController : UIViewController
 @property (nonatomic) id bookId;
+@property (nonatomic) id title;
 @end

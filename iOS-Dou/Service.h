@@ -1,5 +1,5 @@
 //
-//  ServiceURL.h
+//  Service.h
 //  iOS-Dou
 //
 //  Created by lihua on 15/11/16.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ServiceURL : NSObject{
+@interface Service : NSObject{
 
 }
 //获取图书、电影、音乐数据

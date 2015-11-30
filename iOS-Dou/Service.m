@@ -1,14 +1,14 @@
 //
-//  ServiceURL.m
+//  Service.m
 //  iOS-Dou
 //
 //  Created by lihua on 15/11/16.
 //  Copyright (c) 2015年 lihua. All rights reserved.
 //
 
-#import "ServiceURL.h"
+#import "Service.h"
 
-@implementation ServiceURL{
+@implementation Service{
 }
 
 //获取数据
