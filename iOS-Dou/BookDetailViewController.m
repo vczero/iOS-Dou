@@ -23,8 +23,6 @@
     self.navigationItem.title = self.title;
     [self showDetail];
     
-    
-    
 }
 
 -(void) showDetail{
@@ -50,14 +48,18 @@
                 alert.message = @"网络出现异常，请重试";
                 [alert addButtonWithTitle:@"确定"];
                 [alert show];
+                [_activityIndicator stopAnimating];
                 return;
             }
             [_activityIndicator stopAnimating];
-            NSLog(@"%@", data);
             
             UIView *bookInfo = [[UIView alloc]init];
             float width = UIScreen.mainScreen.bounds.size.width;
-            bookInfo.frame = CGRectMake(0, 70, width, 135);
+            float height = UIScreen.mainScreen.bounds.size.height;
+            UIScrollView *scrollView = [[UIScrollView alloc]init];
+            scrollView.frame = CGRectMake(0, 65, width, height - 115);
+            
+            bookInfo.frame = CGRectMake(0, 0, width, 135);
             CALayer *topBorder = [CALayer layer];
             topBorder.frame = CGRectMake(0.0f, 135, bookInfo.frame.size.width, 1.0f);
             topBorder.backgroundColor = [UIColor colorWithRed:0.914 green:0.906 blue:0.914 alpha:1].CGColor;
@@ -120,8 +122,64 @@
             pageNum.textColor = [UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1];
             pageNum.font = [UIFont fontWithName:@"Heiti TC" size:14];
             [bookInfo addSubview:pageNum];
+            [scrollView addSubview:bookInfo];
             
-            [self.view addSubview:bookInfo];
+            
+            //图书简介
+            UIView *bookDetail = [[UIView alloc]init];
+            bookDetail.frame = CGRectMake(0, 145, width, 300);
+            CALayer *deatilLayer = [CALayer layer];
+            deatilLayer.backgroundColor = [UIColor colorWithRed:0.914 green:0.906 blue:0.914 alpha:1].CGColor;
+            
+            UILabel *bookDetailTitle = [[UILabel alloc]init];
+            bookDetailTitle.text = @"图书简介";
+            bookDetailTitle.frame = CGRectMake(3, 3, 80, 30);
+            bookDetailTitle.layer.borderWidth = 1.0f;
+            bookDetailTitle.layer.borderColor = [[UIColor colorWithRed:0.231 green:0.757 blue:1.000 alpha:1]CGColor];
+            bookDetailTitle.layer.cornerRadius = 5.0f;
+            bookDetailTitle.textAlignment = UITextAlignmentCenter;
+            bookDetailTitle.font = [UIFont fontWithName:@"Helvetica" size:15];
+            [bookDetail addSubview:bookDetailTitle];
+            
+            UILabel *bookDetailInfo = [[UILabel alloc] init];
+            CGSize size = CGSizeMake(width - 6, 2000);
+            bookDetailInfo.text = data[@"summary"];
+            bookDetailInfo.numberOfLines = 0;
+            bookDetailInfo.font = [UIFont fontWithName:@"Helvetica" size:14];
+            CGSize labelSize = [data[@"summary"] sizeWithFont:bookDetailInfo.font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+            bookDetailInfo.frame = CGRectMake(3, 37, labelSize.width, labelSize.height);
+            int bookDetailHeight = labelSize.height + 45;
+            deatilLayer.frame = CGRectMake(0, bookDetailHeight, width, 1.0f);
+            [bookDetail.layer addSublayer:deatilLayer];
+            [bookDetail addSubview:bookDetailInfo];
+            [scrollView addSubview:bookDetail];
+        
+            UIView *authorDetail = [[UIView alloc]init];
+            authorDetail.frame = CGRectMake(0, bookDetailHeight + 150, width, 300);
+            UILabel *authorDetailTitle = [[UILabel alloc]init];
+            authorDetailTitle.text = @"作者简介";
+            authorDetailTitle.frame = CGRectMake(3, 3, 80, 30);
+            authorDetailTitle.layer.borderWidth = 1.0f;
+            authorDetailTitle.layer.borderColor = [[UIColor colorWithRed:0.231 green:0.757 blue:1.000 alpha:1]CGColor];
+            authorDetailTitle.layer.cornerRadius = 5.0f;
+            authorDetailTitle.textAlignment = UITextAlignmentCenter;
+            authorDetailTitle.font = [UIFont fontWithName:@"Helvetica" size:15];
+            [authorDetail addSubview:authorDetailTitle];
+            
+            UILabel *authorDetailInfo = [[UILabel alloc] init];
+            authorDetailInfo.text = data[@"author_intro"];
+            authorDetailInfo.numberOfLines = 0;
+            authorDetailInfo.font = [UIFont fontWithName:@"Helvetica" size:14];
+            CGSize authorInfoSize = [data[@"author_intro"] sizeWithFont:bookDetailInfo.font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+            authorDetailInfo.frame = CGRectMake(3, 37, authorInfoSize.width, authorInfoSize.height);
+            
+            [authorDetail addSubview:authorDetailInfo];
+            [scrollView addSubview:authorDetail];
+
+            
+            float sHeight = bookDetailHeight +  authorInfoSize.height + bookInfo.bounds.size.height + 70;
+            scrollView.contentSize = CGSizeMake(width, sHeight);
+            [self.view addSubview:scrollView];
         });
         
         

@@ -113,7 +113,7 @@
             int viewHeight = 100;
             int blockHieght = viewHeight + 20;
             int screenWidth = [[UIScreen mainScreen]bounds].size.width;
-            _contentView.contentSize = CGSizeMake(screenWidth, (blockHieght + 5) * 10);
+            _contentView.contentSize = CGSizeMake(screenWidth, (blockHieght + 5) * books.count);
             
             [books enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 int bookImgWidth = 80;
