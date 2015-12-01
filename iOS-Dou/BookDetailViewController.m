@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = self.title;
+    self.navigationItem.title = self.bookTitle;
     [self showDetail];
     
 }

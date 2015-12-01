@@ -22,7 +22,7 @@
 		1C14763B1BF9F52E00B2C208 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C1476381BF9F52E00B2C208 /* book.png */; };
 		1C14763C1BF9F52E00B2C208 /* movie.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C1476391BF9F52E00B2C208 /* movie.png */; };
 		1C14763D1BF9F52E00B2C208 /* music.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C14763A1BF9F52E00B2C208 /* music.png */; };
-		1C97FE021BFC1AFE00F8F8FE /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C97FE011BFC1AFE00F8F8FE /* RootViewController.m */; };
+		1C49D0DC1C0DAAF500C3467C /* DWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49D0DB1C0DAAF500C3467C /* DWebView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,8 +61,8 @@
 		1C1476381BF9F52E00B2C208 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		1C1476391BF9F52E00B2C208 /* movie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie.png; sourceTree = "<group>"; };
 		1C14763A1BF9F52E00B2C208 /* music.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music.png; sourceTree = "<group>"; };
-		1C97FE001BFC1AFE00F8F8FE /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		1C97FE011BFC1AFE00F8F8FE /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		1C49D0DA1C0DAAF500C3467C /* DWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWebView.h; sourceTree = "<group>"; };
+		1C49D0DB1C0DAAF500C3467C /* DWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWebView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +116,8 @@
 				1C1476301BF9BEBB00B2C208 /* MovieViewController.m */,
 				1C1476321BF9BF8900B2C208 /* MusicViewController.h */,
 				1C1476331BF9BF8900B2C208 /* MusicViewController.m */,
-				1C97FE001BFC1AFE00F8F8FE /* RootViewController.h */,
-				1C97FE011BFC1AFE00F8F8FE /* RootViewController.m */,
+				1C49D0DA1C0DAAF500C3467C /* DWebView.h */,
+				1C49D0DB1C0DAAF500C3467C /* DWebView.m */,
 				1C1476081BF9B44A00B2C208 /* Main.storyboard */,
 				1C14760B1BF9B44A00B2C208 /* Images.xcassets */,
 				1C14760D1BF9B44A00B2C208 /* LaunchScreen.xib */,
@@ -276,9 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C49D0DC1C0DAAF500C3467C /* DWebView.m in Sources */,
 				1C1476341BF9BF8900B2C208 /* MusicViewController.m in Sources */,
 				1C1476071BF9B44A00B2C208 /* BookViewController.m in Sources */,
-				1C97FE021BFC1AFE00F8F8FE /* RootViewController.m in Sources */,
 				1C1476311BF9BEBB00B2C208 /* MovieViewController.m in Sources */,
 				1C1476041BF9B44A00B2C208 /* AppDelegate.m in Sources */,
 				1C1476011BF9B44A00B2C208 /* main.m in Sources */,

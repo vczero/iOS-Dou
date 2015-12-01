@@ -9,35 +9,40 @@
 #import "MusicViewController.h"
 
 @interface MusicViewController ()
-
+@property UITextField *searchInput;
 @end
 
 @implementation MusicViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    UILabel *label = [[UILabel alloc]init];
-    label.frame = CGRectMake(20, 20, 300, 30);
-    label.text = @"音乐";
+    self.title = @"音乐";
+    int btnWidth = 60;
+    int searchHeight = 40;
+    int statusHieght = 30;
+    int screenWidth = [[UIScreen mainScreen]bounds].size.width;
+    int screenHeight = [[UIScreen mainScreen]bounds].size.height;
+    int inputWidth = screenWidth - 20 - btnWidth;
+    self.searchInput = [[UITextField alloc] init];
+    self.searchInput.frame = CGRectMake(10, statusHieght, inputWidth, searchHeight);
+    [self.searchInput setBorderStyle: UITextBorderStyleRoundedRect];
+    self.searchInput.placeholder = @"请输入音乐的名称";
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:label];
+    UIButton *searchBtn = [[UIButton alloc]init];
+    searchBtn.frame = CGRectMake(inputWidth + 5, statusHieght, btnWidth, searchHeight);
+    searchBtn.backgroundColor = [UIColor colorWithRed:0.000 green:0.569 blue:1.000 alpha:1];
+    [searchBtn setTitle:@"搜索" forState:UIControlStateNormal];
+    [searchBtn setTitle:@"搜索" forState:UIControlStateHighlighted];
+    [searchBtn addTarget:self action:@selector(searchBooK:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.searchInput];
+    [self.view addSubview:searchBtn];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

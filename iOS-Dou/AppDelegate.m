@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "RootViewController.h"
 #import "BookViewController.h"
 #import "MovieViewController.h"
 #import "MusicViewController.h"
@@ -44,14 +43,12 @@
     movieViewController.tabBarItem.title = @"电影";
     movieViewController.tabBarItem.image = [UIImage imageNamed:@"movie"];
     UINavigationController *moviewNav = [[UINavigationController alloc]initWithRootViewController:movieViewController];
-    [moviewNav setNavigationBarHidden:YES];
     
     MusicViewController *musicViewController = [MusicViewController new];
     musicViewController.view.backgroundColor = [UIColor whiteColor];
     musicViewController.tabBarItem.title = @"音乐";
     musicViewController.tabBarItem.image = [UIImage imageNamed:@"music"];
     UINavigationController *musicNav = [[UINavigationController alloc]initWithRootViewController:musicViewController];
-    [musicNav setNavigationBarHidden:YES];
     
     //设置TabBar的颜色
     int width = [[UIScreen mainScreen] applicationFrame].size.width;

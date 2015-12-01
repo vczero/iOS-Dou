@@ -38,6 +38,7 @@
     self.searchInput = [[UITextField alloc] init];
     self.searchInput.frame = CGRectMake(10, statusHieght, inputWidth, searchHeight);
     [self.searchInput setBorderStyle: UITextBorderStyleRoundedRect];
+    self.searchInput.placeholder = @"请输入图书的名称";
     
     UIButton *searchBtn = [[UIButton alloc]init];
     searchBtn.frame = CGRectMake(inputWidth + 5, statusHieght, btnWidth, searchHeight);
@@ -71,7 +72,7 @@
     NSInteger idx = ges.view.tag - IDX_TAG;
     BookDetailViewController *detail = [BookDetailViewController new];
     detail.bookId = _tempBooks[idx][@"id"];
-    detail.title = _tempBooks[idx][@"title"];
+    detail.bookTitle = _tempBooks[idx][@"title"];
     [self.navigationController pushViewController:detail animated:YES];
     
 }
