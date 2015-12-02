@@ -32,9 +32,9 @@
     int btnWidth = 60;
     int searchHeight = 40;
     int statusHieght = 30;
-    int screenWidth = [[UIScreen mainScreen]bounds].size.width;
-    int screenHeight = [[UIScreen mainScreen]bounds].size.height;
-    int inputWidth = screenWidth - 20 - btnWidth;
+    float screenWidth = [[UIScreen mainScreen]bounds].size.width;
+    float screenHeight = [[UIScreen mainScreen]bounds].size.height;
+    float inputWidth = screenWidth - 20 - btnWidth;
     self.searchInput = [[UITextField alloc] init];
     self.searchInput.frame = CGRectMake(10, statusHieght, inputWidth, searchHeight);
     [self.searchInput setBorderStyle: UITextBorderStyleRoundedRect];

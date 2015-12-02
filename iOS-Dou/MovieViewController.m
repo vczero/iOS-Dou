@@ -167,7 +167,7 @@
     NSInteger idx = ges.view.tag - IDX_TAG;
     DWebView *wb = [[DWebView alloc]init];
     wb.url= _subjects[idx][@"alt"];
-    wb.movieTitle = _subjects[idx][@"title"];
+    wb.showTitle = _subjects[idx][@"title"];
     [self.navigationController pushViewController:wb animated:YES];
 
 }

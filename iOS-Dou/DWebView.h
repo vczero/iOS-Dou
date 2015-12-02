@@ -12,6 +12,6 @@
     
 }
 @property NSString *url;
-@property NSString *movieTitle;
+@property NSString *showTitle;
 
 @end
