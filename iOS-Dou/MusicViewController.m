@@ -52,6 +52,7 @@
     }
     _scrollView.frame = CGRectMake(0, 75, screenWidth, height -124);
     [self.view addSubview:_scrollView];
+    [self musicList:nil];
     
     
 }
@@ -158,9 +159,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
     self.navigationController.navigationBar.hidden = YES;
-    [self musicList:nil];
+
 }
 
 -(void)itemClick:(UITapGestureRecognizer *)ges{
